@@ -1,3 +1,3 @@
 User-agent: *
 Disallow: /
-# Demo is intentionally not indexed
+# DEMO: vervang dit bestand bij officiële lancering
