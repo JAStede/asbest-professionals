@@ -49,3 +49,41 @@ document.querySelector('.menu-toggle')?.addEventListener('click',function(){cons
   const observer=('IntersectionObserver'in window)?new IntersectionObserver(entries=>{if(entries[0].isIntersecting)start();else stop()},{threshold:0}):null;
   if(observer)observer.observe(root);else start();
 })();
+
+/* LJ Studio: consistente niet-emoji pijltjes in alle CTA-links. */
+(() => {
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const makeArrow = () => {
+    const svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('width', '16');
+    svg.setAttribute('height', '16');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '2');
+    svg.setAttribute('stroke-linecap', 'round');
+    svg.setAttribute('stroke-linejoin', 'round');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.style.cssText = 'display:inline-block;vertical-align:-.15em;flex-shrink:0;margin-left:.3em';
+    const path = document.createElementNS(svgNS, 'path');
+    path.setAttribute('d', 'M7 17 17 7M8 7h9v9');
+    svg.appendChild(path);
+    return svg;
+  };
+  document.querySelectorAll('a, button').forEach(el => {
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    const matches = [];
+    while (walker.nextNode()) {
+      if (walker.currentNode.nodeValue.includes('↗')) matches.push(walker.currentNode);
+    }
+    matches.forEach(node => {
+      const parts = node.nodeValue.split('↗');
+      const fragment = document.createDocumentFragment();
+      parts.forEach((part, i) => {
+        if (i) fragment.appendChild(makeArrow());
+        if (part) fragment.appendChild(document.createTextNode(part));
+      });
+      node.replaceWith(fragment);
+    });
+  });
+})();
