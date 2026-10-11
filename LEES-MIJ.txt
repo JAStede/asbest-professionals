@@ -1,16 +1,1 @@
-ASBEST PROFESSIONALS – MINIMALE UPDATE
-
-Upload naar de HOOFDMAP van GitHub alleen:
-1. werkwijze.html
-2. style.css
-3. script.js
-
-De overige 9 HTML-pagina's, index.html, de homepage-fotoslider, het logo, de slogan en de assets-map NIET vervangen.
-
-Toegevoegd:
-- Interactieve 4-stappenanimatie op Werkwijze met automatisch wisselen en pauzeknop
-- Subtiele scrollanimaties voor bestaande kaarten/teksten
-- Vaste contactbalk op mobiele schermen (bellen en offerte aanvragen)
-
-Let op: het formulier op de demo gebruikt nog mailto en verzendt niet automatisch.
-Na commit: vernieuw de pagina en controleer de mobiele weergave.
+Upload alleen script.js naar de hoofdmap van GitHub. Dit behoudt de bestaande functies en vervangt pijltjes en het FiberCover-icoon door SVG. Ververs daarna de browsercache op mobiel.

@@ -87,3 +87,36 @@ document.querySelector('.menu-toggle')?.addEventListener('click',function(){cons
     });
   });
 })();
+
+
+/* LJ Studio: vaste vector-iconen voor decoratieve symbolen, inclusief FiberCover. */
+(() => {
+  const ns = 'http://www.w3.org/2000/svg';
+  const icon = (type) => {
+    const svg = document.createElementNS(ns, 'svg');
+    for (const [key,val] of Object.entries({viewBox:'0 0 24 24',width:'20',height:'20',fill:'none',stroke:'currentColor','stroke-width':'2','stroke-linecap':'round','stroke-linejoin':'round','aria-hidden':'true',focusable:'false'})) svg.setAttribute(key,val);
+    svg.style.cssText='display:inline-block;width:1.1em;height:1.1em;vertical-align:-.13em;flex-shrink:0';
+    const path=document.createElementNS(ns,'path');
+    path.setAttribute('d',type==='arrow'?'M7 17 17 7M8 7h9v9':'M12 2l2.4 6.9L21 12l-6.6 3.1L12 22l-2.4-6.9L3 12l6.6-3.1L12 2z');
+    svg.appendChild(path);return svg;
+  };
+  // Ook pijltjes buiten links, zoals decoratieve ronde iconen, worden SVG.
+  document.querySelectorAll('.icon-bubble, .process-step-icon, .process-art-icon').forEach(el => {
+    const symbol=el.textContent.trim();
+    if(symbol==='↗'||symbol==='↗️'||symbol==='↗︎')el.replaceChildren(icon('arrow'));
+    if(['✳','✳️','✳︎','★','⭐','🌟','✦'].includes(symbol))el.replaceChildren(icon('star'));
+  });
+  // Alleen resterende pijltjes in zichtbare tekst, zonder inhoud of links te wissen.
+  const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+  const targets=[];
+  while(walker.nextNode()) {
+    const node=walker.currentNode, parent=node.parentElement;
+    if(!parent||parent.closest('script,style,svg,textarea,code,pre'))continue;
+    if(/↗[\uFE0E\uFE0F]?/.test(node.nodeValue))targets.push(node);
+  }
+  targets.forEach(node=>{
+    const pieces=node.nodeValue.split(/↗[\uFE0E\uFE0F]?/),frag=document.createDocumentFragment();
+    pieces.forEach((part,i)=>{if(i)frag.appendChild(icon('arrow'));if(part)frag.appendChild(document.createTextNode(part))});
+    node.replaceWith(frag);
+  });
+})();
