@@ -104,3 +104,23 @@
 .menu-toggle span {
     color: #123e30 !important;
 }
+
+/* Navigatie: leesbare groene tekst */
+.site-header nav a:not(.nav-cta) {
+  color: #123e30;
+}
+
+.site-header nav a.current:not(.nav-cta),
+.site-header nav a:hover:not(.nav-cta) {
+  color: #4e9c3b;
+}
+
+@media (max-width: 750px) {
+  .site-header nav.open {
+    background: #ffffff;
+  }
+
+  .site-header nav.open a:not(.nav-cta) {
+    color: #123e30;
+  }
+}
