@@ -1,0 +1,10 @@
+ASBEST PROFESSIONALS – COMPLETE DEMOWEBSITE MET FOTOSLIDER
+
+Upload alle losse bestanden uit deze map naar de HOOFDMAP van GitHub (niet de ZIP zelf en niet deze map als extra submap).
+Behoud de map assets met assets/logo.png.
+
+Aanpassing: alleen homepage krijgt 4 wisselende achtergrondfoto’s (5 seconden, fade); style.css en script.js ondersteunen dit. Alle overige HTML-pagina’s zijn ongewijzigd overgenomen uit de laatst aangeleverde revisie.
+
+LET OP: de vier afbeeldingen worden geladen vanaf de huidige website van Asbest Professionals (impro.usercontent.one). Ze zijn NIET lokaal opgeslagen; als de bron deze verwijdert of externe toegang blokkeert, kunnen foto’s ontbreken. Vraag voor definitieve oplevering de originele projectfoto’s op bij de eigenaar en sla ze lokaal op in assets. Gebruik alleen met toestemming.
+
+De website is een conceptdemo; laat inhoud en rechten controleren voor publicatie.

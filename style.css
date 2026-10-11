@@ -24,3 +24,20 @@
 .site-header .brand-words strong{display:block;color:var(--forest)}
 .site-header .brand-words small{display:block;margin-top:5px;font-size:8px;line-height:1.4;letter-spacing:.10em;color:var(--muted)}
 @media(max-width:750px){.site-header .brand{gap:8px}.site-header .brand-words{font-size:10px}.site-header .brand-words small{font-size:7px;letter-spacing:0}.site-header .site-logo{width:76px}.site-header .menu-toggle{padding:8px 10px}}
+
+/* Statistieken: leesbaar op mobiel en tablet */
+.trust-grid .count-number,.trust-grid .trust-word{display:block;font-variant-numeric:tabular-nums;line-height:1.12;overflow-wrap:normal;}
+.trust-grid>div{min-width:0;}
+@media(max-width:600px){.trust-grid .count-number,.trust-grid .trust-word{font-size:clamp(1.25rem,5vw,1.85rem)}.trust-grid>div span{overflow-wrap:anywhere}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important}}
+
+/* Homepage: rustige projectfotoslider; tekst blijft vast en leesbaar */
+.hero-slideshow{position:relative;isolation:isolate;overflow:hidden;background:#09291f}
+.hero-slideshow .hero-slides,.hero-slideshow .hero-slide,.hero-slideshow .hero-slide-overlay{position:absolute;inset:0;pointer-events:none}
+.hero-slideshow .hero-slides{z-index:-2}
+.hero-slideshow .hero-slide{background-position:center;background-size:cover;background-repeat:no-repeat;opacity:0;transition:opacity 1.15s ease-in-out;will-change:opacity}
+.hero-slideshow .hero-slide.is-active{opacity:1}
+.hero-slideshow .hero-slide-overlay{z-index:-1;background:linear-gradient(90deg,rgba(9,41,31,.97) 0%,rgba(18,62,48,.86) 46%,rgba(18,62,48,.50) 100%)}
+.hero-slideshow .hero-grid{position:relative;z-index:1}
+@media(max-width:750px){.hero-slideshow .hero-slide-overlay{background:linear-gradient(90deg,rgba(9,41,31,.94),rgba(9,41,31,.73))}.hero-slideshow .hero-slide{background-position:center}}
+@media(prefers-reduced-motion:reduce){.hero-slideshow .hero-slide{transition:none!important}}
