@@ -1,0 +1,1 @@
+Alle tien HTML-pagina’s gebruiken nu assets/logo.png. Upload de inhoud van deze ZIP naar de ROOT van de GitHub-repository; upload niet de buitenste map. Het logo is inbegrepen. Bestaande projectinhoud en SEO blijven behouden.
