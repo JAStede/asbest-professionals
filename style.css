@@ -66,3 +66,31 @@
 /* Compacte mobiele contactactie; laat ruimte voor vaste knop */
 .mobile-contact-bar{display:none}
 @media(max-width:750px){body.has-mobile-contact{padding-bottom:76px}.mobile-contact-bar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;bottom:0;left:0;right:0;z-index:80;padding:10px max(12px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));background:#fff;box-shadow:0 -5px 25px #102e2125}.mobile-contact-bar a{display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:9px;background:var(--forest);color:#fff;font-size:14px;font-weight:700;text-align:center;line-height:1.2}.mobile-contact-bar a:first-child{background:#e8f0e5;color:var(--forest)}.mobile-contact-bar a:focus-visible{outline:3px solid var(--leaf);outline-offset:2px}}
+/* Pijltjes netjes op mobiel en tablet */
+.button,
+.ghost,
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.button span[aria-hidden="true"],
+.ghost span[aria-hidden="true"] {
+  display: inline-block;
+  flex-shrink: 0;
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-variant-emoji: text;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .button,
+  .ghost,
+  .nav-cta {
+    flex-wrap: wrap;
+  }
+}
