@@ -94,3 +94,13 @@
     flex-wrap: wrap;
   }
 }
+
+/* Mobiele navigatie: groene menuknop */
+.menu-toggle {
+    color: #123e30 !important;
+    -webkit-text-fill-color: #123e30;
+}
+
+.menu-toggle span {
+    color: #123e30 !important;
+}
