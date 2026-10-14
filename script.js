@@ -120,3 +120,24 @@ document.querySelector('.menu-toggle')?.addEventListener('click',function(){cons
     node.replaceWith(frag);
   });
 })();
+
+
+/* Privacyvriendelijke cookievoorkeuren: geen analytische tracking zonder toestemming. */
+(function(){
+  const KEY='asbest_professionals_cookie_consent_v1';
+  function read(){try{const x=JSON.parse(localStorage.getItem(KEY)||'null');return x&&typeof x.analytics==='boolean'?x:null;}catch(e){return null;}}
+  const panel=document.createElement('section');
+  panel.className='ap-cookie-panel';panel.setAttribute('aria-label','Cookievoorkeuren');
+  panel.innerHTML='<div class="ap-cookie-inner"><div class="ap-cookie-copy"><strong>Uw privacy is belangrijk</strong><p>We gebruiken noodzakelijke opslag om uw keuze te onthouden. Analytische cookies zijn optioneel en staan standaard uit. Op deze demo is nog geen statistiekentool actief. <a href="./privacyverklaring.html">Lees de privacyverklaring</a>.</p><div class="ap-cookie-preferences" hidden><label><input type="checkbox" checked disabled> Noodzakelijk (altijd actief)</label><label><input type="checkbox" class="ap-cookie-analytics"> Analytische cookies (optioneel)</label></div></div><div class="ap-cookie-actions"><button type="button" class="ap-cookie-btn ap-cookie-accept">Alles accepteren</button><button type="button" class="ap-cookie-btn ap-cookie-reject">Weigeren</button><button type="button" class="ap-cookie-btn ap-cookie-settings">Voorkeuren aanpassen</button><button type="button" class="ap-cookie-btn ap-cookie-save" hidden>Keuze opslaan</button></div></div>';
+  document.body.appendChild(panel);
+  const pref=panel.querySelector('.ap-cookie-preferences'),analytics=panel.querySelector('.ap-cookie-analytics'),saveBtn=panel.querySelector('.ap-cookie-save'),settings=panel.querySelector('.ap-cookie-settings');
+  function save(value){try{localStorage.setItem(KEY,JSON.stringify({necessary:true,analytics:value,updated:new Date().toISOString()}));}catch(e){}window.dispatchEvent(new CustomEvent('cookie-consent-changed',{detail:{analytics:value}}));panel.hidden=true;}
+  function show(){const old=read();analytics.checked=old?old.analytics:false;pref.hidden=true;saveBtn.hidden=true;settings.hidden=false;panel.hidden=false;}
+  panel.querySelector('.ap-cookie-accept').addEventListener('click',()=>save(true));
+  panel.querySelector('.ap-cookie-reject').addEventListener('click',()=>save(false));
+  settings.addEventListener('click',()=>{pref.hidden=false;saveBtn.hidden=false;settings.hidden=true;});
+  saveBtn.addEventListener('click',()=>save(analytics.checked));
+  const footer=document.querySelector('.footer-bottom');
+  if(footer){const links=document.createElement('span');links.className='ap-cookie-footer-links';const privacy=document.createElement('a');privacy.href='./privacyverklaring.html';privacy.textContent='Privacyverklaring';const button=document.createElement('button');button.type='button';button.textContent='Cookievoorkeuren';button.className='ap-cookie-footer-button';button.addEventListener('click',show);links.append(privacy,button);footer.appendChild(links);}
+  panel.hidden=!!read();
+})();
